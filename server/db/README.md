@@ -1,11 +1,24 @@
-Resetting database to its original state
+### Documentation
 
-npm run knex migrate:rollback --all
-npm run knex migrate:latest
-npm run knex seed:run
+- [Knex.js](https://knexjs.org/guide/)
 
 
+### Creating a *migrations* file & folder
 
-Testing functions in db.ts
+`npm run knex migrate:make [migrations-file-name]` e.g.
 
-You can import them into server.ts and console.log() to see if they work. Make sure to delete them once you're done
+    npm run knex migrate:make todos
+
+### Creating a *seeds* file & folder
+
+Placeholder
+
+### Resetting database to its original state
+
+    npm run knex migrate:rollback --all
+    npm run knex migrate:latest
+    npm run knex seed:run
+
+### Testing functions in db.ts
+
+You can import them into *server.ts* and `console.log()` to see if they work. Make sure to delete them once you're done.

@@ -3,9 +3,8 @@ import { Todo } from '../../models/todos'
 
 const db = connection
 
-// Create "addTodo" function
-export function addTodo(): Promise<Todo[]> {
-  return db('todos').insert({ id })
+export function addTodo(name: string) {
+  return db('todos').insert({ name }).returning('id')
 }
 
 export function getTodos(): Promise<Todo[]> {
@@ -16,8 +15,14 @@ export function getTodoById(id: number): Promise<Todo> {
   return db('todos').where({ id }).select().first()
 }
 
-// Create "updateTodo" function
+export function updateTodo(id: number, status: string) {
+  return db('todos').update({ status }).where({ id })
+}
 
 export function delTodoById(id: number) {
   return db('todos').where({ id }).del()
+}
+
+export function close() {
+  db.destroy()
 }
