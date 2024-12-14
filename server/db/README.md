@@ -1,7 +1,7 @@
 ### Documentation
 
 - [Knex.js](https://knexjs.org/guide/)
-
+- [Routes](/server/routes/README.md)
 
 ### Creating a *migrations* file & folder
 
