@@ -1,4 +1,4 @@
-import Router from 'express'
+import { Router } from 'express'
 import * as db from '../db/db.ts' // lets you access your functions in db.ts
 
 const router = Router()
@@ -22,4 +22,4 @@ router.get('/', async (req, res) => {
 
 // DEL 'api/v1/todos/:id'
 
-export default Router
+export default router

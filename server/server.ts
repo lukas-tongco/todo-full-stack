@@ -1,6 +1,6 @@
 import express from 'express'
 import * as Path from 'node:path'
-import todos from './routes/todos.ts'
+import todos from './routes/todos'
 
 const server = express()
 
@@ -9,6 +9,7 @@ server.use(express.json())
 server.use('/api/v1/todos', todos)
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('Running in production mode...')
   server.use(express.static(Path.resolve('public')))
   server.use('/assets', express.static(Path.resolve('./dist/assets')))
   server.get('*', (req, res) => {
