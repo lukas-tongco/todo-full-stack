@@ -1,14 +1,14 @@
 interface Props {
   name: string
-  details?: string
-  priority: number
+  // details?: string
+  // priority: number
   status: string
 }
 
 export default function Todo({
   name,
-  details = 'None provided',
-  priority,
+  // details = 'None provided',
+  // priority,
   status,
 }: Props) {
   return (
@@ -16,11 +16,11 @@ export default function Todo({
       <p>
         <strong>{name}</strong>
       </p>
-      <p>Description: {details}</p>
+      {/* <p>Description: {details}</p>
       <p>
         Priority: {priority === 1 && 'Low'} {priority === 2 && 'Normal'}{' '}
         {priority === 3 && 'Urgent'}
-      </p>
+      </p> */}
       <p>Status: {status}</p>
     </>
   )

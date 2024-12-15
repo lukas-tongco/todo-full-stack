@@ -16,24 +16,24 @@ export function addTodo(newTodo: Todo) {
 }
 
 export function updateStatusCompleted(id: number) {
-  return db('todos').where({ id }).update('status', 'completed')
+  return db('todos').where({ id }).update('status', 'Completed')
 }
 
 export function updateStatusPending(id: number) {
-  return db('todos').where({ id }).update('status', 'pending')
+  return db('todos').where({ id }).update('status', 'Pending')
 }
 
-export function updatePriority1(id: number) {
-  return db('todos').where({ id }).update('priority', 1)
-}
+// export function updatePriority1(id: number) {
+//   return db('todos').where({ id }).update('priority', 1)
+// }
 
-export function updatePriority2(id: number) {
-  return db('todos').where({ id }).update('priority', 2)
-}
+// export function updatePriority2(id: number) {
+//   return db('todos').where({ id }).update('priority', 2)
+// }
 
-export function updatePriority3(id: number) {
-  return db('todos').where({ id }).update('priority', 3)
-}
+// export function updatePriority3(id: number) {
+//   return db('todos').where({ id }).update('priority', 3)
+// }
 
 export function deleteTodo(id: number) {
   return db('todos').where({ id }).del()

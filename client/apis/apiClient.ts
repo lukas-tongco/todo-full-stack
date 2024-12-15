@@ -5,7 +5,7 @@ const rootURL = '/api/v1/todos'
 
 export async function fetchTodos(): Promise<Todo[]> {
   const res = await request.get(rootURL)
-  return res.body
+  return res.body // as Todo[]
 }
 
 export async function fetchTodoById(id: number): Promise<Todo> {

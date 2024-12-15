@@ -8,7 +8,9 @@ function App() {
         <h1>todos</h1>
         <AddTodo />
       </header>
-      <section className="main">{/* <TodoList /> */}</section>
+      <section className="main">
+        <TodoList />
+      </section>
       <footer className="footer"></footer>
     </>
   )
