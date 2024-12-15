@@ -20,6 +20,7 @@ export default function TodoList() {
   //   },
   // ]
 
+  // Gets data from the database
   const {
     data: todos,
     isPending,
@@ -46,7 +47,7 @@ export default function TodoList() {
             name={todo.name}
             // details={todo.details}
             // priority={todo.priority}
-            status={todo.status}
+            active={todo.active}
           />
         )
       })}

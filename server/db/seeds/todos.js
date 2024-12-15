@@ -9,25 +9,16 @@ export async function seed(knex) {
   await knex('todos').del()
   await knex('todos').insert([
     {
-      id: 1,
       name: 'Buy groceries',
-      details: 'Buy milk, eggs, and bread at the market.',
-      priority: 2,
-      status: 'Completed',
+      active: true,
     },
     {
-      id: 2,
       name: 'Complete project',
-      details: 'Push code to GitHub and submit on Trello.',
-      priority: 3,
-      status: 'Pending',
+      active: true,
     },
     {
-      id: 3,
       name: 'Mow the lawn',
-      details: 'Mow the front and backyard when you have time.',
-      priority: 1,
-      status: 'Pending',
+      active: false,
     },
   ])
 }

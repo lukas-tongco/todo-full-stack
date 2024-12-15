@@ -6,7 +6,8 @@ const server = express()
 
 server.use(express.json())
 
-server.use('/api/v1/todos', todos)
+// API route
+server.use('/api/v1/todos', todos) // localhost:3000/api/v1/todos
 
 if (process.env.NODE_ENV === 'production') {
   console.log('Running in production mode...')
