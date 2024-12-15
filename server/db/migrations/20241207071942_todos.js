@@ -14,9 +14,9 @@ export function up(knex) {
   return knex.schema.createTable('todos', (table) => {
     table.increments()
     table.string('name').notNullable() // Field must always be filled and can't be blank
-    table.text('details')
-    table.integer('priority').defaultTo(1) // 1 = Low, 2 = Medium, 3 = High
-    table.string('status').defaultTo('pending') // pending or completed
+    table.text('details').defaultTo('None provided')
+    table.integer('priority').defaultTo(1) // 1 = Low, 2 = Normal, 3 = Urgent
+    table.string('status').defaultTo('Pending') // Pending or Completed
     table.timestamps()
   })
 }
