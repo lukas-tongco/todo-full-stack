@@ -1,29 +1,23 @@
+import DeleteTodo from './DeleteTodo'
+import UpdateTodoStatus from './UpdateTodoStatus'
+
 interface Props {
+  id: number
   name: string
-  // details?: string
-  // priority: number
   active: boolean
 }
 
-export default function Todo({
-  name,
-  // details = 'None provided',
-  // priority,
-  active,
-}: Props) {
+export default function Todo({ id, name, active }: Props) {
   return (
     <>
-      <p>
-        <strong>{name}</strong>
-      </p>
-      {/* <p>Description: {details}</p>
-      <p>
-        Priority: {priority === 1 && 'Low'} {priority === 2 && 'Normal'}{' '}
-        {priority === 3 && 'Urgent'}
-      </p> */}
-      <p>
-        Status: {active && 'Active'} {!active && 'Completed'}
-      </p>
+      <li className={!active ? 'completed' : ''}>
+        <div className="view">
+          {/* <input className="toggle" type="checkbox" checked={!active} /> */}
+          <UpdateTodoStatus id={id} active={active} />
+          <label>{name}</label>
+          <DeleteTodo id={id} />
+        </div>
+      </li>
     </>
   )
 }

@@ -3,54 +3,43 @@ import Todo from './Todo'
 import { fetchTodos } from '../apis/apiClient'
 
 export default function TodoList() {
-  // Dummy data for testing
-  // const todos = [
-  //   { name: 'Test Task 1', priority: 2, status: 'Pending' },
-  //   {
-  //     name: 'Test Task 2',
-  //     details: 'Test details 2',
-  //     priority: 3,
-  //     status: 'Pending',
-  //   },
-  //   {
-  //     name: 'Test Task 3',
-  //     details: 'Test details 3',
-  //     priority: 1,
-  //     status: 'Completed',
-  //   },
-  // ]
-
   // Gets data from the database
   const {
     data: todos,
-    isPending,
+    isLoading,
     isError,
+    error,
   } = useQuery({
     queryKey: ['todos'],
-    queryFn: () => fetchTodos(),
+    queryFn: fetchTodos,
   })
 
-  if (isPending) {
-    return <p>Loading...</p>
+  if (isLoading) {
+    return <div className="loading-spinner">Loading...</div>
   }
 
   if (isError) {
-    return <p>Error...</p>
+    return <p>Error: {error.message}</p>
+  }
+
+  if (!todos || todos.length === 0) {
+    return <p>No todos available</p>
   }
 
   return (
     <>
-      {todos.map((todo, i) => {
-        return (
-          <Todo
-            key={i}
-            name={todo.name}
-            // details={todo.details}
-            // priority={todo.priority}
-            active={todo.active}
-          />
-        )
-      })}
+      <ul className="todo-list">
+        {todos.map((todo) => {
+          return (
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              name={todo.name}
+              active={todo.active}
+            />
+          )
+        })}
+      </ul>
     </>
   )
 }

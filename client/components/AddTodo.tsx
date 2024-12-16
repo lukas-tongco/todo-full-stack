@@ -1,13 +1,16 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { addTodo } from '../apis/apiClient'
-import { Todo } from '../../models/todos'
+import { TodoData } from '../../models/todos'
 
 // eslint-disable-next-line no-unused-vars
 export default function AddTodo() {
   const [newTodo, setNewTodo] = useState('')
-  // const [submitTodo, setSubmitTodo] = useState('')
-  const addMutation = useMutation({ mutationFn: (todo: Todo) => addTodo(todo) })
+  const queryClient = useQueryClient()
+  const addMutation = useMutation({
+    mutationFn: (todo: TodoData) => addTodo(todo),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['todos'] }),
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value)
@@ -15,15 +18,12 @@ export default function AddTodo() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault() // Prevents automatically submitting data as a query
-    // setSubmitTodo(newTodo)
+    addMutation.mutate({ name: newTodo, active: true })
     setNewTodo('')
   }
 
   return (
     <>
-      <p>{newTodo}</p>
-      <p>Submitted: {submitTodo}</p>
-
       <form onSubmit={handleSubmit}>
         <input
           className="new-todo"

@@ -1,7 +1,9 @@
-export interface Todo {
-  id: number
+export interface TodoData {
   name: string
-  // details?: string // "?" means it can be NULL, left blank, optional
-  // priority: number
   active: boolean
+}
+
+// Contains everything in TodoData and adds on 'id'
+export interface Todo extends TodoData {
+  id: number
 }
