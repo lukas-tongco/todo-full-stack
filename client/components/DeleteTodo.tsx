@@ -18,5 +18,20 @@ export default function DeleteTodo({ id }: Props) {
     deleteMutation.mutate()
   }
 
-  return <button className="destroy" onClick={handleDelete}></button>
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleDelete()
+    }
+  }
+
+  return (
+    <button
+      className="destroy"
+      onClick={handleDelete}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      ×
+    </button>
+  )
 }

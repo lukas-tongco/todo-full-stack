@@ -28,6 +28,7 @@ export default function AddTodo() {
         <input
           className="new-todo"
           placeholder="What needs to be done?"
+          aria-label="What needs to be done?"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={true}
           onChange={handleChange}

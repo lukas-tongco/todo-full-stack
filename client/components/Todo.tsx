@@ -12,9 +12,16 @@ export default function Todo({ id, name, active }: Props) {
     <>
       <li className={!active ? 'completed' : ''}>
         <div className="view">
-          {/* <input className="toggle" type="checkbox" checked={!active} /> */}
-          <UpdateTodoStatus id={id} active={active} />
-          <label>{name}</label>
+          <form>
+            <input
+              type="checkbox"
+              id={`todo-${id}`}
+              style={{ display: 'none' }}
+              aria-label={`Toggle status for ${name}`}
+            />
+            <UpdateTodoStatus id={id} active={active} />
+            <label htmlFor={`todo-${id}`}>{name}</label>
+          </form>
           <DeleteTodo id={id} />
         </div>
       </li>
